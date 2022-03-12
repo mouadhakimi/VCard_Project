@@ -19,6 +19,6 @@ public class HomeScreenController {
 	@FXML
 	public void handleLaunchButton() throws IOException {
 		// Here we make use of our new method allowing us to change views inside the main Parent		
-		App.showView("QuizOverview");
+		//App.showView("QuizOverview");
 	}
 }

@@ -52,7 +52,7 @@ public class App extends Application {
 	private static <T> T loadFXML(String fxml) throws IOException {
 		// As we will use this method a lot, and we have all our view in a specific
 		// package, let's put it there to save some typing :)
-		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/isen/quiz/view/" + fxml + ".fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/view/" + fxml + ".fxml"));
 		return fxmlLoader.load();
 	}
 
@@ -69,7 +69,7 @@ public class App extends Application {
 			// We can only set the center of a borderPane, not a Parent, so we rely on
 			// either an explicit cast or our better generics implementation to convert our
 			// scene and modify it.
-			mainlayout.setCenter(loadFXML(rootElement));
+			mainlayout.setCenter(loadFXML("HomeScreen"));
 		} catch (IOException e) {
 			// Chances are that the file is not found. Nothing we can do, really, but as
 			// IOException is checked, it would require us to add nasty support all over our

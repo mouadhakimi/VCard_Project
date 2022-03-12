@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.quiz.view.MainLayoutController">
+<BorderPane prefHeight="450.0" prefWidth="600.0" stylesheets="@quiz.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.vcard.view.MainLayoutController">
 	<top>
 		<MenuBar BorderPane.alignment="CENTER">
 			<menus>

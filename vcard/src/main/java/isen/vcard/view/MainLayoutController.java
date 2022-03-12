@@ -13,9 +13,4 @@ public class MainLayoutController {
 		App.showView("HomeScreen");
 	}
 
-	public void gotoQuestionAdmin() {
-		App.showView("QuestionsAdmin");
-
-	}
-
 }
