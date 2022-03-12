@@ -27,6 +27,11 @@ public class Person {
 		this.setBirth_date(birth_date);
 	}
 	
+	public void printperson() {
+		System.out.print(idperson + " " + lastname + " " + firstname + " " + nickname +
+				" " + phone_number + " " + address + " " + email_address + " " + birth_date + "\n");
+	}
+	
 	public Integer getIdperson() {
 		return idperson;
 	}

@@ -32,23 +32,37 @@ public class PersonDaoTestCase {
 		stmt.executeUpdate("DELETE FROM person");
 		stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES"
 				+ " (1,'Ouda','Amine','Aminux','+33763942277','saint omer','amine.ouda@student.junia.com',NULL)");
-		//stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES"
-				//+ " (2,'Ouda','Amine','Aminux','+33763942277','saint omer','amine.ouda@student.junia.com','2002-10-01')");
-		//stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES"
-				//+ " (3,'Ouda','Amine','Aminux','+33763942277','saint omer','amine.ouda@student.junia.com','2005-05-09')");
+		stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES"
+				+ " (2,'HAKIMI','Mouad','Haki','+33784321699','saint denis','mouad.hakimi@student.junia.com',NULL)");
+		stmt.executeUpdate("INSERT INTO person(idperson,lastname,firstname,nickname,phone_number,address,email_address,birth_date) VALUES"
+				+ " (3,'BLINDA','Wissal','WiWi','+33763963498','fives','wissal.blinda@student.junia.com',NULL)");
 		stmt.close();
 		connection.close();
 	}
 	
 	@Test
-	public void shouldListGenres() {
+	public void ListPersons() {
 		// WHEN
 		List<Person> person = personDao.listPersonnes();
 		
 		// THEN
-		person.forEach(System.out::println);
-
+		for(Person P : person) {
+			P.printperson();
+		}
+		System.out.print("\n\n\n");
 	}
 	
-
+	@Test
+	public void AddPerson() {
+		PersonDao.addPersonnes(4,"Test", "Test", "Test", "+33999999999", "Test", "Test@test.com", null);
+		ListPersons();
+		DeletePersonne();
+		ListPersons();
+	}
+	
+	@Test
+	public void DeletePersonne() {
+		PersonDao.DeletePersonne(4);
+	}
+	
 }

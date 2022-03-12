@@ -1,24 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>isen</groupId>
+	<artifactId>quiz</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<javafx.version>17</javafx.version>
+		<mainClass>isen.quiz.Launcher</mainClass>
+	</properties>
 
-  <groupId>isen</groupId>
-  <artifactId>vcard</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
-
-  <name>vcard</name>
-  <url>http://www.example.com</url>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
-
-  <dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-fxml</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -34,5 +38,117 @@
 		    <artifactId>sqlite-jdbc</artifactId>
 		    <version>3.30.1</version>
 		</dependency>
-	</dependencies> 
+<!-->		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>win</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>mac</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-graphics</artifactId>
+			<version>${javafx.version}</version>
+			<classifier>linux</classifier>
+		</dependency>-->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>17</release>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.6</version>
+				<configuration>
+					<mainClass>${mainClass}</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>win</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>win</shadedClassifierName>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>${mainClass}</mainClass>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude>*:*:*:mac</exclude>
+									<exclude>*:*:*:linux</exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+					<execution>
+						<id>linux</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>linux</shadedClassifierName>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>${mainClass}</mainClass>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude>*:*:*:win</exclude>
+									<exclude>*:*:*:mac</exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+					<execution>
+						<id>mac</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>mac</shadedClassifierName>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>${mainClass}</mainClass>
+								</transformer>
+							</transformers>
+							<artifactSet>
+								<excludes>
+									<exclude>*:*:*:win</exclude>
+									<exclude>*:*:*:linux</exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
