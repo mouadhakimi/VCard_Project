@@ -15,8 +15,7 @@
 					<MenuItem mnemonicParsing="false" onAction="#gotoHome" text="Home" />
 					<SeparatorMenuItem mnemonicParsing="false" />
 						<MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close" />
-                  		
-						
+                  			
 					</items>
 				</Menu>
 			</menus>

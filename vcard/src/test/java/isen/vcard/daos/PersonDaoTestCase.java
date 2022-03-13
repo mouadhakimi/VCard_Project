@@ -65,4 +65,20 @@ public class PersonDaoTestCase {
 		PersonDao.DeletePersonne(4);
 	}
 	
+	@Test
+	public void UpdatePersonne() {
+		
+		List<Person> person = personDao.listPersonnes();
+		int id = 2;
+		for(Person P : person) {
+			if(P.getIdperson() == id) {
+				P.setNickname("hello");
+				PersonDao.UpdatePersonne(id,P);
+				ListPersons();
+			}
+		}
+		
+		
+	}
+	
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="isen.vcard.view.VcardUpdateController">
+   <children>
+      <Text layoutX="194.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VCARD" textAlignment="CENTER" wrappingWidth="211.33935546875" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="21.0" />
+         </font></Text>
+      <TableView layoutY="69.0" prefHeight="330.0" prefWidth="600.0">
+        <columns>
+          <TableColumn prefWidth="50.39996337890625" text="ID" />
+          <TableColumn prefWidth="74.39996337890625" text="First Name" />
+            <TableColumn prefWidth="72.79998779296875" text="Last Name" />
+            <TableColumn prefWidth="70.39996337890625" text="Nick Name" />
+            <TableColumn prefWidth="89.60003662109375" text="Phone Number" />
+            <TableColumn prefWidth="76.0" text="address" />
+            <TableColumn prefWidth="92.79998779296875" text="Email Address" />
+            <TableColumn text="Birth Date" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

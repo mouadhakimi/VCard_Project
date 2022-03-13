@@ -98,5 +98,36 @@ public class PersonDao {
 		      }
 		    }
 	}
+	
+	public static void UpdatePersonne(Integer id, Person P) {
+		Connection conn = null;
+		try {
+		      conn = DataSourceFactory.getDataSource().getConnection();
+		      
+		      String sqlQuery = "UPDATE person SET lastname = ?, firstname = ?, nickname = ?,phone_number = ?,"
+		      		+ "address = ?, email_address = ?  WHERE idperson = ?";
+			      PreparedStatement statement = conn.prepareStatement(sqlQuery);
+
+			      statement.setString(1, P.getLastname());
+			      statement.setString(2, P.getFirstname());
+			      statement.setString(3, P.getNickname());
+			      statement.setString(4, P.getPhone_number());
+			      statement.setString(5, P.getAddress());
+			      statement.setString(6, P.getEmail_address());
+			      statement.setInt(7, P.getIdperson());
+			      statement.executeUpdate();		      
+		      
+		    } catch (SQLException e) {
+		        throw new Error("Problem", e);
+		    } finally {
+		      try {
+		        if (conn != null) {
+		            conn.close();
+		        }
+		      } catch (SQLException ex) {
+		          System.out.println(ex.getMessage());
+		      }
+		    }
+	}
 
 }
